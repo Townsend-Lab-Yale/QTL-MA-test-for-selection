@@ -1,10 +1,9 @@
 % QTL Likelihood Calculator
 % Briton Park and Jeffrey P. Townsend
-% 29 September 2015
 %
 % This code calculates the likelihood of strength of selection c given QTL
 % data and the rate parameters of the distribution of mutation
-% effects, which is assumed to be an asymmetrical laplace distribution.
+% effects.
 % 
 % INPUT:
 % C is a vector of the values of c to be examined.
@@ -44,7 +43,7 @@ for j = 1: length(C)
         e = E(i);
         h = 1;
         
-        % Draw 6.5*10^4 mutations from the distribution of substitution
+        % Draw 1.0*10^5 mutations from the distribution of substitution
         % effects for strength of selection c.
         muts = draw_muts(c, thetaL, thetaR);
         
@@ -79,13 +78,9 @@ for j = 1: length(C)
     ltable(:,j) = lvector;
 end
 end
-% This function generates 6.5*10^4 samples from the distribution of
-% mutation effects given strength of selection c by rejection sampling.
+% This function generates 1.0*10^5 samples from the distribution of
+% mutation effects given strength of selection c by markov sampling.
 function s = draw_muts(c, thetaL, thetaR)
-%Propose 10^7 samples from the distribution of mutation effects.
-% Accept or reject each mutatation with probability = fixation probability under
-% strength of selection c. Take the first 6.5*10^4 accepted mutations.
-
 delta = .5;
 pdf = @(x) probfix2(c,x, thetaL,thetaR);
 proppdf = @(x,y) unifpdf(y-x,-delta,delta);

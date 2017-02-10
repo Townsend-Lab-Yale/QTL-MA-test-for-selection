@@ -118,7 +118,7 @@ while (poisscdf(cap,lambda)-atzero)/(1-atzero)<.999
 end
 end
 
-% Calculates the likelihood of theta, phi, and u given the MA data (see text)
+% Calculates the likelihood of theta, phi, and u given the MA data
 function [l1, l2 ] = mutefflikelihood(theta,phi, changes, gens, u, cap)
 l1 = 1;
 l2 = 1; 
@@ -139,7 +139,7 @@ end
 val = sum(Vals);
 end
 
-
+% Returns a n-dimensional vector y of summed mutational effects
 function [y] = sumLapl(k, theta, phi)
 n = 25000;
 n_phi = round(n*phi);

@@ -1,7 +1,6 @@
 
 % QTL Likelihood Calculator
-% Daniel P Rice and Jeffrey P. Townsend
-% 27 October 2011
+% Briton Park and Jeffrey P. Townsend
 %
 % This code calculates the likelihood of strength of selection c given QTL
 % data and the mean and standard deviation of the distribution of mutation
@@ -43,7 +42,7 @@ for j = 1: length(C)
         e = E(i);
         h = 1;
         
-        % Draw 6.5*10^4 mutations from the distribution of substitution
+        % Draw 1.0*10^5 mutations from the distribution of substitution
         % effects for strength of selection c.
         muts = draw_muts(c, mu, sig);
         
@@ -80,13 +79,9 @@ for j = 1: length(C)
 end
 end
 
-% This function generates 6.5*10^4 samples from the distribution of
-% mutation effects given strength of selection c by rejection sampling.
+% This function generates 1.0*10^5 samples from the distribution of
+% mutation effects given strength of selection c by markov sampling.
 function s = draw_muts(c, mu, sig)
-%Propose 10^7 samples from the distribution of mutation effects.
-% Accept or reject each mutatation with probability = fixation probability under
-% strength of selection c. Take the first 6.5*10^4 accepted mutations.
-
 delta = .5;
 pdf = @(x) probfix2(c,x, mu, sig);
 proppdf = @(x,y) unifpdf(y-x,-delta,delta);

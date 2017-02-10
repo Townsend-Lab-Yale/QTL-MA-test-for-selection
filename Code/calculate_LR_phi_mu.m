@@ -3,28 +3,34 @@
 % Briton Park and Jeffrey P. Townsend
 %  
 % Implements a hill climbing algorithm to find the maximum likelihood
-% estimates for the exponential decay parameter, the parameter controlling
-% the submodal and supermodal probability masses, and the displacement
-% parameter of the distribution of effect sizes of spontaneous mutations
+% estimates for the submodal and supermodal exponential decay parameters, the 
+% parameter controlling the submodal and supermodal probability masses, and the 
+% displacement parameter of the distribution of effect sizes of spontaneous mutations
 % and the mutation rate.
+% 
 % 
 % INPUT:
 % changes is a vector containing the changes in the trait between
 % 	measurements in each line
 % gens is a vector containing the number of generations between each
 %   measurement in each line
-% u0 is the initial guess for u
-% theta0, phi0, and mu0 are initial guesses for theta, phi, and mu
-% thetastep0, phistep0, mustep0 are initial step sizes for the algorithm
+% u0 is the intitial guess for u
+% thetaL0 and thetaR0, phi0, and mu0 are initial guesses for thetaL,
+% thetaR, and mu
+% thetaLstep0, thetaRstep0, phistep0, mustep0, and ustep0 are initial step 
+% sizes for the algorithm
 % maxiter is the number of iterations to run the hill-climbing algorithm
-% 
+
 % OUTPUT:
-% theta is the exponential decay parameter
+% thetaL is submodal exponential decay parameter
+% thetaR is supermodal exponential decay parameter
+% mu is the displacement parameter
 % phi is the parameter controlling the submodal and supermodal probability
 % masses
 % mu is the displacement parameter
 % u is the per-generation mutation rate of the trait
 % 
+
 function [thetaL, thetaR, u, phi,mu, likelihood] = calculate_LR_phi_mu(changes, gens, u0,ustep0, thetaL0,thetaR0, phi0,mu0, thetaLstep0, thetaRstep0,phistep0,mustep0, maxiter)
 
 % Initialize thetaL, thetaR, phi, mu, u and the step sizes
@@ -151,7 +157,9 @@ while (poisscdf(cap,lambda)-atzero)/(1-atzero)<.999
 end
 end
 
-% Calculates the likelihood of theta, phi, mu, and u given the MA data (see text)
+% Calculates the likelihood of thetaL, thetaR, phi, mu, and u given the MA data (see 
+% text)
+
 function [l1, l2 ] = mutefflikelihood(thetaL,thetaR, phi,mu, changes, gens, u, cap)
 l1 = 1;
 l2 = 1; 
@@ -172,6 +180,7 @@ end
 val = sum(Vals);
 end
 
+% Returns a n-dimensional vector y of summed mutational effects
 function [y] = sumLapl(k, thetaL, thetaR, phi)
 n = 25000;
 n_phi = round(n*phi);

@@ -14,10 +14,10 @@
 % 	measurements in each line
 % gens is a vector containing the number of generations between each
 %   measurement in each line
-% u0 is the intitial gues for u
-% thetaL0 and thetaR0, phi0, and mu0 are initial guesses for thetaL,
+% u0 is the intitial guess for u
+% thetaL0 and thetaR0, and mu0 are initial guesses for thetaL,
 % thetaR, and mu
-% thetaLstep0, thetaRstep0, phistep0, mustep0, and ustep0 are initial step 
+% thetaLstep0, thetaRstep0, mustep0, and ustep0 are initial step 
 % sizes for the algorithm
 % maxiter is the number of iterations to run the hill-climbing algorithm
 % 
@@ -131,7 +131,7 @@ while (poisscdf(cap,lambda)-atzero)/(1-atzero)<.999
 end
 end
 
-% Calculates the likelihood of thetaL, thetaR, mu, and u given the MA data (see text)
+% Calculates the likelihood of thetaL, thetaR, mu, and u given the MA data
 function [l1, l2 ] = mutefflikelihood(thetaL,thetaR, mu, changes, gens, u, cap)
 l1 = 1;
 l2 = 1; 
@@ -152,7 +152,7 @@ end
 val = sum(Vals);
 end
 
-
+% Returns a n-dimensional vector y of summed mutational effects
 function [y] = sumLapl( k, thetaL, thetaR)
 n = 25000;
 n_half = n*.5;

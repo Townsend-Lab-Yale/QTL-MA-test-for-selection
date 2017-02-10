@@ -1,7 +1,6 @@
 % ESTIMATING THE EFFECT DISTRIBUTION OF MUTATIONS FROM MUTATION
 % ACCUMULATION DATA 
 % Briton Park and Jeffrey P. Townsend
-% 26 August 2016
 %  
 % Implements a hill climbing algorithm to find the maximum likelihood
 % estimates for the submodal and supermodal exponential decay parameters of 
@@ -114,7 +113,7 @@ while (poisscdf(cap,lambda)-atzero)/(1-atzero)<.999
 end
 end
 
-% Calculates the likelihood of thetaL, thetaR, and u given the MA data (see text)
+% Calculates the likelihood of thetaL, thetaR, and u given the MA data
 function [l1, l2 ] = mutefflikelihood(thetaL,thetaR, changes, gens, u, cap)
 l1 = 1;
 l2 = 1; 
@@ -135,7 +134,7 @@ end
 val = sum(Vals);
 end
 
-
+% Returns a n-dimensional vector y of summed mutational effects
 function [y] = sumLapl( k, thetaL, thetaR)
 n = 25000;
 n_half = n*0.5;

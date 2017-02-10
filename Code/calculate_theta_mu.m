@@ -1,7 +1,6 @@
 % ESTIMATING THE EFFECT DISTRIBUTION OF MUTATIONS FROM MUTATION
 % ACCUMULATION DATA 
 % Briton Park and Jeffrey P. Townsend
-% 26 August 2016
 %  
 % Implements a hill climbing algorithm to find the maximum likelihood
 % estimates for the exponential decay parameter and displacement parameter
@@ -12,17 +11,14 @@
 % 	measurements in each line
 % gens is a vector containing the number of generations between each
 %   measurement in each line
-% u0 is the initial guess for u
-% thetaL0 and thetaR0, phi0, and mu0 are initial guesses for thetaL,
-% thetaR, phi, and mu
-% thetaLstep0, thetaRstep0, phistep0, mustep0, and ustep0 are initial step 
-% sizes for the algorithm
+% u0 is the intitial gues for u
+% theta0 and mu0 are initial guesses for theta and mu
+% thetastep0, mustep0, ustep0 is the initial step sizes for the algorithm
 % maxiter is the number of iterations to run the hill-climbing algorithm
 % 
 % OUTPUT:
 % theta is the exponential decay parameter
-% mu is the displacement parameter
-% u is the per-generation mutation rate of the trait
+% u is the per-generation mutation rate of the trait% 
 % 
 function [theta, u, mu, likelihood] = calculate_theta_mu(changes, gens, u0,ustep0, theta0, mu0, thetastep0,mustep0, maxiter)
 
@@ -115,7 +111,7 @@ while (poisscdf(cap,lambda)-atzero)/(1-atzero)<.999
 end
 end
 
-% Calculates the likelihood of theta and mu given the MA data (see text)
+% Calculates the likelihood of theta and mu given the MA data
 function [l1, l2 ] = mutefflikelihood(theta, mu, changes, gens, u, cap)
 l1 = 1;
 l2 = 1; 
@@ -135,6 +131,7 @@ end
 val = sum(val);
 end
 
+% Returns the probability of observed mutational effects 
 function [prob] = sumLapl(x, n, theta)
 prob = 0;
 for j = 0:(n-1)

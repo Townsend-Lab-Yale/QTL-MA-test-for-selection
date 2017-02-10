@@ -1,7 +1,6 @@
 % ESTIMATING THE EFFECT DISTRIBUTION OF MUTATIONS FROM MUTATION
 % ACCUMULATION DATA 
 % Briton Park and Jeffrey P. Townsend
-% 26 August 2016
 %  
 % Implements a hill climbing algorithm to find the maximum likelihood
 % estimates for the exponential decay parameter of the distribution of
@@ -116,6 +115,7 @@ end
 val = sum(val);
 end
 
+% Returns the probability of observed mutational effects 
 function [prob] = sumLapl(x, n, theta)
 prob = 0;
 for j = 0:(n-1)

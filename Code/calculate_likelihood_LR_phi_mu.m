@@ -1,6 +1,7 @@
 % QTL Likelihood Calculator
 % Briton Park and Jeffrey P. Townsend
-%
+% The source code is released under the GPLv3 license
+
 % This code calculates the likelihood of strength of selection c given QTL
 % data and the rate parameters of the distribution of mutation
 % effects.

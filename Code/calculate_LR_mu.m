@@ -1,7 +1,7 @@
 % ESTIMATING THE EFFECT DISTRIBUTION OF MUTATIONS FROM MUTATION
 % ACCUMULATION DATA 
 % Briton Park and Jeffrey P. Townsend
-% 26 August 2016
+% The source code is released under the GPLv3 license
 %  
 % Implements a hill climbing algorithm to find the maximum likelihood
 % estimates for submodal and supermodal exponential decay parameters and

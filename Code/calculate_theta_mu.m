@@ -1,7 +1,8 @@
 % ESTIMATING THE EFFECT DISTRIBUTION OF MUTATIONS FROM MUTATION
 % ACCUMULATION DATA 
 % Briton Park and Jeffrey P. Townsend
-%  
+% The source code is released under the GPLv3 license
+
 % Implements a hill climbing algorithm to find the maximum likelihood
 % estimates for the exponential decay parameter and displacement parameter
 % of the distribution of effect sizes of spontaneous mutations, 
